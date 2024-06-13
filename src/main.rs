@@ -3,6 +3,7 @@ use std::collections::HashMap;
 use std::path::PathBuf;
 
 #[derive(Parser)]
+#[command(author, version)]
 struct Cli {
     #[command(subcommand)]
     command: Commands,
@@ -10,20 +11,18 @@ struct Cli {
 
 #[derive(Subcommand)]
 enum Commands {
-    // add tags to a file
+    /// Add tags to a file
     Tag {
         path: std::path::PathBuf,
         tags: Vec<String>,
     },
-    // remove tags from a file
+    /// Remove tags from a file
     Untag {
         path: std::path::PathBuf,
         tags: Vec<String>,
     },
-    // get all tags for a file
-    Ls {
-        tag: String,
-    },
+    /// List all files with a tag
+    Ls { tag: String },
 }
 
 fn add_tag(tag_map: &mut HashMap<String, Vec<PathBuf>>, path: &PathBuf, tags: &Vec<String>) {
