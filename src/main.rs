@@ -27,7 +27,12 @@ enum Commands {
 
 fn main() -> std::io::Result<()> {
     let cli = Cli::parse();
-    let contents = match std::fs::read_to_string(".tags-rs.json") {
+    let mut tags_file = match dirs::home_dir() {
+        Some(p) => p,
+        None => std::path::PathBuf::from(""),
+    };
+    tags_file.push(".tags-rs.json");
+    let contents = match std::fs::read_to_string(&tags_file) {
         Ok(s) => s,
         _ => String::from(""),
     };
@@ -68,8 +73,8 @@ fn main() -> std::io::Result<()> {
         },
     }
 
-    let serialized = serde_json::to_string(&tag_map).unwrap();
-    std::fs::write(".tags-rs.json", serialized)?;
+    let serialized = serde_json::to_string(&tag_map)?;
+    std::fs::write(tags_file, serialized)?;
 
     Ok(())
 }
