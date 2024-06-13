@@ -6,7 +6,7 @@ edition = "2021"
 description = "A CLI for adding tags to files for organization."
 homepage = "https://github.com/rp50/tags-rs"
 repository = "https://github.com/rp50/tags-rs"
-license-file = "LICENSE"
+license = "MIT"
 
 [dependencies]
 clap = { version = "4.5.7", features = ["derive"] }
