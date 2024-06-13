@@ -1,9 +1,12 @@
 [package]
 name = "tags-rs"
+authors = ["Robert Paul <contact@robertpaul.dev>"]
 version = "0.1.0"
 edition = "2021"
 description = "A CLI for adding tags to files for organization."
+homepage = "https://github.com/rp50/tags-rs"
 repository = "https://github.com/rp50/tags-rs"
+license_file = "LICENSE"
 
 [dependencies]
 clap = { version = "4.5.7", features = ["derive"] }
